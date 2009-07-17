@@ -1,0 +1,141 @@
+  [4;36;1mSQL (0.000255)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.014628)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.003477)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.002633)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.000541)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000178)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000280)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000564)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000391)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000463)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000408)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000496)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000091)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to BjMigration0 (20080909151517)
+  [4;36;1mSQL (0.000088)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000122)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.000150)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.004361)[0m   [0mCREATE TABLE "bj_job" ("bj_job_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "command" text DEFAULT NULL NULL, "state" text DEFAULT NULL NULL, "priority" integer DEFAULT NULL NULL, "tag" text DEFAULT NULL NULL, "is_restartable" integer DEFAULT NULL NULL, "submitter" text DEFAULT NULL NULL, "runner" text DEFAULT NULL NULL, "pid" integer DEFAULT NULL NULL, "submitted_at" datetime DEFAULT NULL NULL, "started_at" datetime DEFAULT NULL NULL, "finished_at" datetime DEFAULT NULL NULL, "env" text DEFAULT NULL NULL, "stdin" text DEFAULT NULL NULL, "stdout" text DEFAULT NULL NULL, "stderr" text DEFAULT NULL NULL, "exit_status" integer DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.000380)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002985)[0m   [0mCREATE TABLE "bj_job_archive" ("bj_job_archive_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "command" text DEFAULT NULL NULL, "state" text DEFAULT NULL NULL, "priority" integer DEFAULT NULL NULL, "tag" text DEFAULT NULL NULL, "is_restartable" integer DEFAULT NULL NULL, "submitter" text DEFAULT NULL NULL, "runner" text DEFAULT NULL NULL, "pid" integer DEFAULT NULL NULL, "submitted_at" datetime DEFAULT NULL NULL, "started_at" datetime DEFAULT NULL NULL, "finished_at" datetime DEFAULT NULL NULL, "archived_at" datetime DEFAULT NULL NULL, "env" text DEFAULT NULL NULL, "stdin" text DEFAULT NULL NULL, "stdout" text DEFAULT NULL NULL, "stderr" text DEFAULT NULL NULL, "exit_status" integer DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.000478)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002333)[0m   [0mCREATE TABLE "bj_config" ("bj_config_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "hostname" text DEFAULT NULL NULL, "key" text DEFAULT NULL NULL, "value" text DEFAULT NULL NULL, "cast" text DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.002390)[0m   [0;1mCREATE UNIQUE INDEX "index_bj_config_on_hostname_and_key" ON "bj_config" ("hostname", "key")[0m
+  [4;35;1mSQL (0.002352)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080909151517')[0m
+  [4;36;1mSQL (0.000336)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000486)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000231)[0m   [0;1mPRAGMA index_list("bj_config")[0m
+  [4;35;1mSQL (0.000344)[0m   [0mPRAGMA index_info('index_bj_config_on_hostname_and_key')[0m
+  [4;36;1mSQL (0.000077)[0m   [0;1mPRAGMA index_list("bj_job")[0m
+  [4;35;1mSQL (0.000095)[0m   [0mPRAGMA index_list("bj_job_archive")[0m
+  [4;36;1mSQL (0.000876)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mBj::Table::Job Create (0.000374)[0m   [0mINSERT INTO "bj_job" ("command", "pid", "stdout", "stdin", "is_restartable", "submitter", "env", "stderr", "priority", "tag", "finished_at", "runner", "submitted_at", "exit_status", "state", "started_at") VALUES(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)[0m
+  [4;36;1mBj::Table::Job Load (0.000696)[0m   [0;1mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) [0m
+  [4;35;1mBj::Table::Job Load (0.000699)[0m   [0mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) [0m
+  [4;36;1mBj::Table::Job Load (0.000323)[0m   [0;1mSELECT * FROM "bj_job" LIMIT 1[0m
+  [4;35;1mBj::Table::Job Load (0.000613)[0m   [0mSELECT * FROM "bj_job" LIMIT 1[0m
+  [4;36;1mBj::Table::Job Load (0.000615)[0m   [0;1mSELECT * FROM "bj_job" LIMIT 1[0m
+  [4;35;1mBj::Table::Job Load (0.000533)[0m   [0mSELECT * FROM "bj_job" LIMIT 1[0m
+  [4;36;1mSQL (0.000432)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000233)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.016674)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: syntax error at or near "."
+LINE 1: CREATE DATABASE development.bj ENCODING = 'utf8'
+ ^
+: CREATE DATABASE development.bj ENCODING = 'utf8'[0m
+  [4;36;1mSQL (0.000143)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000102)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.000143)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPGError: ERROR: syntax error at or near "-"
+LINE 1: CREATE DATABASE development-bj ENCODING = 'utf8'
+ ^
+: CREATE DATABASE development-bj ENCODING = 'utf8'[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000102)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.000143)[0m   [0;1mSET search_path TO public[0m
+  [4;35;1mSQL (1.345893)[0m   [0mCREATE DATABASE development_bj ENCODING = 'utf8'[0m
+  [4;36;1mSQL (0.000194)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000102)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.025148)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (0.005028)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.000435)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to BjMigration0 (20080909151517)
+  [4;35;1mSQL (0.000292)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.040881)[0m   [0;1mCREATE TABLE "bj_job" ("bj_job_id" serial primary key, "command" text DEFAULT NULL NULL, "state" text DEFAULT NULL NULL, "priority" integer DEFAULT NULL NULL, "tag" text DEFAULT NULL NULL, "is_restartable" integer DEFAULT NULL NULL, "submitter" text DEFAULT NULL NULL, "runner" text DEFAULT NULL NULL, "pid" integer DEFAULT NULL NULL, "submitted_at" timestamp DEFAULT NULL NULL, "started_at" timestamp DEFAULT NULL NULL, "finished_at" timestamp DEFAULT NULL NULL, "env" text DEFAULT NULL NULL, "stdin" text DEFAULT NULL NULL, "stdout" text DEFAULT NULL NULL, "stderr" text DEFAULT NULL NULL, "exit_status" integer DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.009198)[0m   [0mCREATE TABLE "bj_job_archive" ("bj_job_archive_id" serial primary key, "command" text DEFAULT NULL NULL, "state" text DEFAULT NULL NULL, "priority" integer DEFAULT NULL NULL, "tag" text DEFAULT NULL NULL, "is_restartable" integer DEFAULT NULL NULL, "submitter" text DEFAULT NULL NULL, "runner" text DEFAULT NULL NULL, "pid" integer DEFAULT NULL NULL, "submitted_at" timestamp DEFAULT NULL NULL, "started_at" timestamp DEFAULT NULL NULL, "finished_at" timestamp DEFAULT NULL NULL, "archived_at" timestamp DEFAULT NULL NULL, "env" text DEFAULT NULL NULL, "stdin" text DEFAULT NULL NULL, "stdout" text DEFAULT NULL NULL, "stderr" text DEFAULT NULL NULL, "exit_status" integer DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.007892)[0m   [0;1mCREATE TABLE "bj_config" ("bj_config_id" serial primary key, "hostname" text DEFAULT NULL NULL, "key" text DEFAULT NULL NULL, "value" text DEFAULT NULL NULL, "cast" text DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.003802)[0m   [0mCREATE UNIQUE INDEX "index_bj_config_on_hostname_and_key" ON "bj_config" ("hostname", "key")[0m
+  [4;36;1mSQL (0.003190)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080909151517')[0m
+  [4;35;1mSQL (0.002222)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000147)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000107)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mBj::Table::Job Load (0.000519)[0m   [0;1mSELECT * FROM "bj_job" LIMIT 1[0m
+  [4;35;1mSQL (0.000185)[0m   [0mBEGIN[0m
+  [4;36;1mBj::Table::Job Create (0.000787)[0m   [0;1mINSERT INTO "bj_job" ("command", "pid", "stdout", "stdin", "is_restartable", "submitter", "env", "stderr", "priority", "tag", "finished_at", "runner", "submitted_at", "exit_status", "state", "started_at") VALUES(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)[0m
+  [4;35;1mSQL (0.000282)[0m   [0mSELECT currval('bj_job_bj_job_id_seq')[0m
+  [4;36;1mSQL (0.001483)[0m   [0;1mCOMMIT[0m
+  [4;35;1mBj::Table::Job Load (0.001428)[0m   [0mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) FOR UPDATE[0m
+  [4;36;1mBj::Table::Job Load (0.001078)[0m   [0;1mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) FOR UPDATE[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000080)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.000124)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.000101)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mBj::Table::Job Load (0.000539)[0m   [0;1mSELECT * FROM "bj_job" LIMIT 1[0m
+  [4;35;1mBj::Table::Job Load (0.001226)[0m   [0mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) FOR UPDATE[0m
+  [4;35;1mSQL (0.000212)[0m   [0mBEGIN[0m
+  [4;36;1mBj::Table::Job Load (0.000591)[0m   [0;1mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) FOR UPDATE[0m
+  [4;36;1mSQL (0.000417)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000935)[0m   [0mCOMMIT[0m
+  [4;35;1mBj::Table::Job Load (3.761806)[0m   [0mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) FOR UPDATE[0m
+  [4;36;1mSQL (0.000888)[0m   [0;1mCOMMIT[0m
+  [4;36;1mSQL (0.000231)[0m   [0;1mBEGIN[0m
+  [4;35;1mBj::Table::Job Load (0.000600)[0m   [0mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) FOR UPDATE[0m
+  [4;35;1mSQL (0.000212)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000884)[0m   [0;1mCOMMIT[0m
+  [4;36;1mBj::Table::Job Load (5.291047)[0m   [0;1mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) FOR UPDATE[0m
+  [4;35;1mSQL (0.001536)[0m   [0mCOMMIT[0m
+  [4;35;1mSQL (0.000262)[0m   [0mBEGIN[0m
+  [4;36;1mBj::Table::Job Load (0.000548)[0m   [0;1mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) FOR UPDATE[0m
+  [4;36;1mSQL (0.000222)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000936)[0m   [0mCOMMIT[0m
+  [4;35;1mBj::Table::Job Load (6.378345)[0m   [0mSELECT * FROM "bj_job" WHERE ("bj_job"."bj_job_id" = 1) FOR UPDATE[0m
+  [4;36;1mSQL (0.000756)[0m   [0;1mCOMMIT[0m

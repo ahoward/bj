@@ -1,0 +1,80 @@
+  1.2.0
+    - fixes to docs
+    - added license
+    - factored out job running logic into job.run(), for testing
+    - added some specs.  gasp.
+
+  1.0.3
+    - env wasn't properly unpacked by runner, added YAML.load(job.env), thanks
+      Chris Wanstrath  
+    - made operations that generate migrations, etc, verbose - they dump
+      stdout and stderr to console when running
+
+  1.0.2:
+    - Bj now (should) auto detect the correct rake command on windows as
+      "rake.bat" not "rake".  see Bj.which_rake and Bj.rake for impl.
+
+  1.0.1:
+    - fixed name collision with 'record.attributes = hash' ar mass
+      assignment method (thx jon guymon)
+    - added new sponsor: http://igicom.com/
+
+  0.0.5:
+    - use full path to ruby for plugin mode
+    - plugin correctly installs bin -->> script
+    - plugin install uses --force
+    - properly quote paths in windows (spaces)
+    - switch win signal to ABRT (was INT)
+    - background job regrestration now uses ppid to pin the subprocess to a
+      parent
+    - use ppid to detect parent death and exit in event loop 
+    - don't use gem dependanices in plugin as they are broken when loading from
+      muliple gem repos
+    - added a small amount of drb magic that allows signals to work across
+      processes even on windows (see http://drawohara.com/post/22540307)
+  
+0.0.4:
+  - basic functionality in windows
+  - several small bug fixes
+
+0.0.3:
+  - *many* small bug fixes
+
+  - plugin install should now pick up dependancies from plugin dir, last
+    release had LOAD_PATH/gem issues and was picking up globally installed
+    gems
+
+  - automatic management of the background processing can be turned off if you
+    want to manage your own processes 
+
+  - all jobs are automatically restartable unless submitted with 
+
+       :restartable => false
+
+    this means that, should a runner ever die, upon restart any jobs that were
+    mid-process will automatically be restarted
+
+  - signal based parent lifeline move out of thread and into even loop
+
+  - :lock => true added to a few AR finds to support true write serializable
+    transaction isolation when the db supports it
+
+  - all migrations now use :force => true and
+
+  - running 'bj setup' will always generate a new migration, even if you've
+    already run it before.  this allows easy version upgrades.
+
+  - a few command would blow up on windows because they weren't prefixed with
+    'ruby'.  gotta love the lack of #shebang line on windoze...
+
+  - ./script/bj is searched first before system path env var
+
+  - a default PATH is provided for whacky systems without one
+
+  - database.yml is filtered through ERB ala rails
+  
+0.0.2:
+  - path bug fixes
+
+0.0.1:
+  - initial release

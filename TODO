@@ -1,0 +1,53 @@
+
+- fix TZ bug
+
+- fix doc bug regarding runners
+
+- crontab option
+
+- make tickle easier
+
+- eval option
+
+- flesh out the cli interface - it's a test only at this point
+
+- commands need quoting, esp for windows, "c:\Documents And..." etc
+
+
+
+
+- the whole gem_path thing is still fubar
+
+- signals not operating properly on windows , non critical error tho...
+
+- need to figure out how to cache connections for Bj.in(...)
+
+- ttl will be added. maxing it out will cause auto-resubmission (Steve Midgley)
+
+- is having the runner thread try forever to start the process the best thing?
+
+- allow easy way to run ruby code.  perhaps ./script/runner 'eval STDIN.read'
+  is good enough
+
+- allow easy way to run ruby code that persists
+
+- allow specification of runner on submit (--runner)
+
+- allow specification of tags a runner will consume (--tag)
+
+- test in windows
+
+================================================================================
+
+X ./script/console submission hangs on windows
+X default PATH setting
+X install issues for dave? - gem_path...
+X main only loaded for (bin|script)/bj
+X make it possible to declare externally managed runners
+X restartable will be added. true by default (Steve Midgley)
+X do the lifeline inline with the loop
+X need to address the serialzable writer issue (:lock => true ??)
+X migrations use --force
+X i forget to add "#{ Bj.ruby } ... " to the generate command
+X ./script/bj must be found in path before c:/.....bin/bj
+X make sure database.yml is loaded via YAML::load(ERB.new(File.read * "config/database.yml").result)

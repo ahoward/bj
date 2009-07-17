@@ -1,0 +1,41 @@
+8
+
+dir
+381
+svn+ssh://ahoward@rubyforge.org/var/svn/codeforpeople/rails/plugins/bj/script
+svn+ssh://ahoward@rubyforge.org/var/svn/codeforpeople
+
+
+
+2007-12-13T01:02:48.012746Z
+381
+ahoward
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+29922619-e960-4932-8d85-0e0be7f1775a
+
+bj
+file
+
+
+
+
+2007-12-13T01:07:13.000000Z
+67a9c50bebfc1578a16319bc5b3a8c88
+2007-12-13T01:02:48.012746Z
+381
+ahoward
+has-props
+

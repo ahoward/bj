@@ -1,0 +1,23 @@
+
+
+todo:
+
+  - handle the timezone issue 
+
+  - fix docs regarding the number of runners that get automatically spawned 
+
+  - deal with text vs. varchar?
+
+  - fix the command-line submission
+
+  - make setting up via notickle easier
+
+  - make crontab setup easier
+
+
+
+done:
+
+  - move from attributes.rb to fattr.rb
+
+
