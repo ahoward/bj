@@ -90,10 +90,10 @@ class Bj
 # table classes
 #
     class Job < Table
-      set_table_name "bj_job"
-      set_primary_key "#{ table_name }_id"
+      self.table_name = "bj_job"
+      self.primary_key = "#{ table_name }_id"
 
-      migration { 
+      migration {
         define_method :up do
           create_table table.table_name, :primary_key => table.primary_key, :force => true do |t|
             t.column "command"        , :text
@@ -120,7 +120,7 @@ class Bj
         end
 
         define_method :down do
-          drop_table table.table_name 
+          drop_table table.table_name
         end
       }
 
@@ -131,7 +131,7 @@ class Bj
           transaction do
             jobs.each do |job|
               job = create_hash_for(job.reverse_merge(submit_defaults))
-              job = create! job 
+              job = create! job
               returned << (block ? block.call(job) : job)
             end
           end
@@ -145,7 +145,7 @@ class Bj
             :tag => "",
             :is_restartable => true,
             :submitter => Bj.hostname,
-            :submitted_at => Time.now, 
+            :submitted_at => Time.now,
           }
         end
       end
@@ -165,7 +165,7 @@ class Bj
         def run! options = {}
           job = self
           thread = nil
-          
+
           command = job.command
           env = job.env ? YAML.load(job.env) : {}
           stdin = job.stdin || ''
@@ -181,7 +181,7 @@ class Bj
           job.state = "running"
           job.runner = Bj.hostname
           job.pid = thread.pid
-          job.started_at = started_at 
+          job.started_at = started_at
 
           Bj.transaction(options) do
             job.save!
@@ -208,8 +208,8 @@ class Bj
     end
 
     class JobArchive < Job
-      set_table_name "bj_job_archive"
-      set_primary_key "#{ table_name }_id"
+      self.table_name = "bj_job_archive"
+      self.primary_key = "#{ table_name }_id"
 
       migration {
         define_method(:up) do
@@ -245,8 +245,8 @@ class Bj
     end
 
     class Config < Table
-      set_table_name "bj_config"
-      set_primary_key "#{ table_name }_id"
+      self.table_name = "bj_config"
+      self.primary_key = "#{ table_name }_id"
 
       migration {
         define_method(:up) do
@@ -266,7 +266,7 @@ class Bj
 
         define_method(:down) do
           begin
-            remove_index table.table_name, :column => %w[ hostname key ] 
+            remove_index table.table_name, :column => %w[ hostname key ]
           rescue Exception
           end
           drop_table table.table_name
@@ -282,8 +282,8 @@ class Bj
           transaction do
             options.to_options!
             hostname = options[:hostname] || Bj.hostname
-            record = find :first, :conditions => conditions(:key => key, :hostname => hostname) 
-            record ? record.value : default_for(key) 
+            record = find :first, :conditions => conditions(:key => key, :hostname => hostname)
+            record ? record.value : default_for(key)
           end
         end
 
@@ -297,7 +297,7 @@ class Bj
 
         def default_for key
           record = find :first, :conditions => conditions(:key => key, :hostname => '*')
-          record ? record.value : nil 
+          record ? record.value : nil
         end
 
         def []= key, value
@@ -405,7 +405,7 @@ class Bj
               value.to_s.to_sym
             end,
             'to_nil' => lambda do |value|
-              value.to_s =~ %r/^nil$|^$/i ? nil : value.to_s 
+              value.to_s =~ %r/^nil$|^$/i ? nil : value.to_s
             end,
             'to_s' => lambda do |value|
               value.to_s
@@ -416,7 +416,7 @@ class Bj
       send :extend, ClassMethods
 
       module InstanceMethods
-        def value 
+        def value
           self.class.casts[cast][self["value"]]
         end
       end
