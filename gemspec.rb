@@ -4,7 +4,7 @@ require 'rubygems'
 Gem::Specification::new do |spec|
   $VERBOSE = nil
   spec.name = lib 
-  spec.version = version 
+  spec.version = '1.0' 
   spec.platform = Gem::Platform::RUBY
   spec.summary = lib 
 
@@ -17,9 +17,9 @@ Gem::Specification::new do |spec|
   spec.has_rdoc = File::exist? "doc" 
   spec.test_suite_file = "test/#{ lib }.rb" if File::directory? "test"
   #spec.add_dependency 'attributes', '>= 5.0.0'
-  spec.add_dependency 'main', '>= 2.6.0'
-  spec.add_dependency 'systemu', '>= 1.2.0'
-  spec.add_dependency 'orderedhash', '>= 0.0.3'
+  spec.add_dependency 'main'
+  spec.add_dependency 'systemu'
+  spec.add_dependency 'orderedhash'
 
   spec.extensions << "extconf.rb" if File::exists? "extconf.rb"
 

@@ -49,7 +49,7 @@ unless defined? Bj
     %w[ systemu orderedhash fattr ].each do |lib|
       begin
         require lib
-      rescue
+      rescue LoadError
         require libdir(lib)
       end
     end
